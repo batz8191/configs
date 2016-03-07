@@ -1,0 +1,46 @@
+hardstatus alwayslastline "%{= kg}[ %{kg}%H %{g}][%= %{kw}%-Lw %{=b kg}( %{=b kc}%n*%f %t%{=b kg} ) %{= kw}%+Lw%= %{kg}]"
+activity "Activity in %n^G"
+bell "bell in %n^G"
+defscrollback 10000
+vbell on
+startup_message off
+altscreen on
+
+################################
+# Bindings
+escape ^gG
+
+bind D detach
+
+# C-a f hides caption and hardstatus
+bind f eval "caption splitonly" "hardstatus ignore"
+# C-a F shows caption and hardstatus
+bind F eval "caption splitonly" "hardstatus alwayslastline"
+
+bind j focus down
+bind ^j focus down
+bind k focus up
+bind ^k focus up
+bind t focus top
+bind ^t focus top
+bind b focus bottom
+bind ^b focus bottom
+bind s split
+bind ^s split
+bind v split -v
+bind ^v split -v
+bind o only
+bind ^o only
+bind R remove
+
+# Resize the current region. The space will be removed from or added to
+# the region below or if there's not enough space from the region above.
+bind = resize =
+bind + resize +3
+bind - resize -3
+bind \\ resize max
+
+bind ; colon
+
+# Copy the screen copy to the clipboard
+bind B eval "writebuf" "exec sh -c 'xsel -ibp < /tmp/screen-exchange'"

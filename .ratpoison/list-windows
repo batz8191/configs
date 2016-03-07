@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use IO::Socket;
+use POSIX qw(strftime);
+use List::MoreUtils qw(firstval);
+
+my $HUB_WIDTH = 1110;
+my $FONT = '-*-fixed-medium-*-*-*-22-*-*-*-*-*-iso10646-*';
+my $RATPOISON = 'ratpoison';
+my $socketfile = $ENV{HOME} . "/bin/dzen/.hub.sock";
+my $client = new IO::Socket::UNIX(
+	Peer  => $socketfile,
+	Type => SOCK_STREAM
+) or die $!;
+
+my $group = firstval { m/\d+\*/ } split /\n/, `$RATPOISON -c 'groups'`;
+if($group =~ m/\d+\*(.+)/) { $group = $1; }
+
+my $wins = `$RATPOISON -c 'windows %n %l %t'`;
+my @wins = reverse
+	sort { $a->[1] <=> $b->[1] }
+	map { [split /\s+/, $_, 3] }
+	split /\n/, $wins;
+
+my $ww;
+my @r;
+if($wins !~ m/No managed windows/) {
+	my ($recent, $active) = (-1) x 2;
+	if(@wins > 1) {
+		$recent = $wins[1]->[0];
+	}
+	if(@wins > 0) {
+		$active = $wins[0]->[0];
+	}
+	@wins = sort { $a->[0] <=> $b->[0] } @wins;
+
+	my $px_width = $HUB_WIDTH - 20 * scalar(@wins); # subtract the window padding
+	my $ch_width = $px_width / textwidth('0');
+	$ch_width -= length($group) - 3; # Remove the '{$group} '
+	$ww =  $ch_width / scalar(@wins) - 4; # Remove the '$n []'
+	foreach my $w(@wins) {
+		if($active == $w->[0]) { push @r, "^fg(#ffff00)" . make($w->[0], $w->[2]) . "^fg()"; }
+		elsif($w->[2] eq 'u') { push @r, "^fg(#ff7777)" . make($w->[0], $w->[2]) . "^fg()"; }
+		elsif($recent == $w->[0]) { push @r, "^fg(#ffaaaa)" . make($w->[0], $w->[2]) . "^fg()"; }
+		else { push @r, make($w->[0], $w->[2]); }
+	}
+}
+
+print $client "^fg(#ff7777){$group}^fg() " . join('^p(+20)', @r) . "\n";
+$client->flush;
+$client->close;
+
+sub textwidth {
+	my $txt = shift;
+	my $w = `dzen2-textwidth '$FONT' '$txt'`;
+	return $w;
+}
+
+sub make {
+	my ($n, $t) = @_;
+	$t =~ tr/\x20-\x7f//cd; # Non-unicode font, remove non-ascii
+	$t = substr $t, -$ww if length($t) >= $ww;
+	return "^ca(1,$RATPOISON -c 'select $n')«" . ($n+1) . " $t»^ca()";
+}

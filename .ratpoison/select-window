@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use List::Util qw(first reduce);
+
+my $RATPOISON = 'ratpoison';
+my $class = $ARGV[0];
+exit unless $class;
+my @wins =  map { [split(/\s+/, $_, 3)] } split /\n/, `$RATPOISON -c 'windows %n %l %c'`;
+my $cur;
+if (@ARGV > 1) {
+	$cur = first { $_->[0] == $ARGV[1] } @wins;
+	exit unless $cur;
+	print "@$cur\n";
+} else {
+	$cur = reduce { $a->[1] > $b->[1] ? $a : $b } @wins;
+}
+my $done = 0;
+foreach (@wins[$cur->[0]+1..$#wins]) {
+	if ($_->[2] eq $class) {
+		#print "select $_->[0]\n";
+		`$RATPOISON -c 'select $_->[0]'`;
+		$done = 1;
+		last;
+	}
+}
+if (!$done) {
+	foreach (@wins) {
+		if ($_->[2] eq $class) {
+			#print "select $_->[0]\n";
+			`$RATPOISON -c 'select $_->[0]'`;
+			last;
+		}
+	}
+}

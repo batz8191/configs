@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+mpc clear
+if [[ "$1" =~ \.pls ]]; then
+	curl $1 | /bin/grep '^File[0-9]*' | /bin/sed -e 's/^File[0-9]*=//' | mpc add
+elif [[ "$1" =~ \.m3u ]]; then
+	curl $1 | /bin/sed -e '/^#/D' | mpc add
+else
+	echo "Unknown filetype on $1" 1>&2
+	return
+fi
+mpc play

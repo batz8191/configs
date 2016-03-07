@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+my @nums = split /\n/, `ratpoison -c 'windows %n %s'`;
+my $num = 0;
+my $cur = 0;
+my @com;
+foreach (@nums) {
+	my ($n, $s) = split /\s+/, $_;
+	push @com, "-c 'number $num $n'";
+	$cur = $num if $s eq '*';
+	++$num;
+}
+my $command = 'ratpoison ' . join(' ', @com) . " -c 'select -' -c 'select $cur'";
+#print "$command\n";
+`$command`;

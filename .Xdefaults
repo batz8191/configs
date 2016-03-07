@@ -1,0 +1,64 @@
+URxvt.perl-lib: /home/batz/.urxvt-perl/
+URxvt.perl-ext-common: keyboard-select,url-select,clipboard,selection-autotransform-batz,font-size
+URxvt.background: black
+URxvt.foreground: white
+URxvt.font: xft:Inconsolata:pixelsize=28:antialias=true
+
+URxvt.keysym.M-Up:     perl:font-size:increase
+URxvt.keysym.M-Down:   perl:font-size:decrease
+URxvt.keysym.M-S-Up:   perl:font-size:incglobal
+URxvt.keysym.M-S-Down: perl:font-size:decglobal
+
+URxvt.shading: 10
+URxvt.transparent: true
+URxvt.urgentOnBell: true
+URxvt.scrollBar_right: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+URxvt.saveLines: 8192
+URxvt.cursorBlink: true
+URxvt.colorUL: #86a2be
+URxvt.fading: 30
+URxvt.termName: rxvt
+URxvt.url-select.launcher: google-chrome --user-data-dir=/home/batz/.config/google-chrome/testing
+URxvt.url-select.underline: true
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!URxvt.selection-autotransform-batz.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\\x0d/
+
+! terminal colors ------------------------------------------------------------
+! tangoesque scheme
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #333333
+! DarkRed + Red
+*color1:  #ff0000
+*color9:  #ff3333
+! DarkGreen + Green
+*color2:  #33ff33
+*color10: #66ff66
+! DarkYellow + Yellow
+*color3:  #aaaa00
+*color11: #ffff00
+! DarkBlue + Blue
+*color4:  #0000ff
+*color12: #3333ff
+! DarkMangenta + Mangenta
+*color5:  #ff00ff
+*color13: #ff33ff
+!DarkCyan + Cyan (both not tango)
+*color6:  #00aaaa
+*color14: #00ffff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff

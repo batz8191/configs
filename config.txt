@@ -1,0 +1,33 @@
+#site                 Invalid chars                        required chars          Max length           Salt
+accounts.google.com   ~                                    *                       32
+www.netflix.com       ~                                    *                       10
+www.chase.com         .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       32
+www.amazon.com        ~                                    *                       16
+www.anime-planet.com  ~                                    *                       20
+www.bankofamerica.com .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       32
+noscript.com          .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       100
+login.comcast.net     ~                                    *                       16
+boardgamegeek.com     ~                                    *                       16
+shop.lenovo.com       .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       32
+www.linkedin.com      ~                                    *                       16
+www.crunchyroll.com   ~                                    *                       16
+eac.schwab.com        ~                                    *                       8
+www.pintley.com       ~                                    *                       16
+www.dicetower.com     ~                                    *                       16
+rcam.target.com       .,'"                                 !1                      16
+www.fandango.com      ~                                    *                       16
+personal.vanguard.com .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       9
+www.vim.org           ~                                    *                       16
+www.reddit.com        ~                                    *                       16
+www.comixology.com    ~                                    *                       16
+192.168.1.1           ~                                    *                       16
+account.live.com      ~                                    *                       16
+www.facebook.com      ~                                    *                       17
+marvel.com            ~                                    !1                      16                   1
+www-ssl.bestbuy.com   ~                                    *                       16
+store.steampowered.com ~                                   *                       16
+github.com            ~                                    *                       16
+#anidb          
+#five guys      
+#comcast        
+#vim            

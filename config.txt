@@ -27,7 +27,3 @@ marvel.com            ~                                    !1                   
 www-ssl.bestbuy.com   ~                                    *                       16
 store.steampowered.com ~                                   *                       16
 github.com            ~                                    *                       16
-#anidb          
-#five guys      
-#comcast        
-#vim            

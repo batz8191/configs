@@ -110,7 +110,7 @@ definekey top s-F exec google-chrome
 definekey top s-C-F exec google-chrome --user-data-dir=$HOME/.config/google-chrome/testing
 definekey top s-M-F exec google-chrome --user-data-dir=$HOME/.config/google-chrome/work
 definekey top s-S-Return exec urxvt
-definekey top s-L exec xscreensaver-command -lock
+definekey top s-C-L exec xscreensaver-command -lock
 definekey top s-Scroll_Lock exec xscreensaver-command -lock
 definekey top s-R dmenu
 definekey top s-V exec gvim

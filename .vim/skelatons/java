@@ -1,0 +1,9 @@
+// Copyright 2010 Google Inc. All Rights Reserved.
+
+«$1:import «$2»;»
+
+/**
+ * «$3»
+ * @author batz@google.com (Matt/Batz Spear)
+ */
+«$4»

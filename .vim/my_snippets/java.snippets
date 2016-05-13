@@ -1,0 +1,135 @@
+snippet i "import (i)" b
+import $1;
+endsnippet
+
+snippet p "print" b
+System.out.print($1);$0
+endsnippet
+
+snippet pl "println" b
+System.out.println($1);$0
+endsnippet
+
+snippet main "main method (main)" b
+public static void main(String[] args) {
+  $0
+}
+endsnippet
+
+snippet pc "public class (pc)" b
+public class ${1:Class} {
+  ${2:// code}
+}
+endsnippet
+
+snippet rc "private class (rc)" b
+private class ${1:Class} {
+  ${2:// code}
+}
+endsnippet
+
+snippet class "class (class)" b
+class ${1:Class} {
+  ${2:// code}
+}
+endsnippet
+
+snippet in "interface (in)" b
+interface ${1:`!p snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }{
+  $0
+}
+endsnippet
+
+snippet p "public (p)"
+public $1
+endsnippet
+
+snippet o "protected (o)"
+protected $1
+endsnippet
+
+snippet r "private (r)"
+private $1
+endsnippet
+
+snippet s "static (s)"
+static $1
+endsnippet
+
+snippet f "final (f)"
+final $1
+endsnippet
+
+snippet psf "public static final (psf)"
+public static final $1;
+endsnippet
+
+snippet func "function (func)"
+${1:void} ${2:func}($3) ${4:throws $5} {
+  $0
+}
+endsnippet
+
+snippet pf "pubilc function (pf)"
+public ${1:void} ${2:func}($3) ${4:throws $5} {
+  $0
+}
+endsnippet
+
+snippet of "protected function (of)"
+protected ${1:void} ${2:func}($3) ${4:throws $5} {
+  $0
+}
+endsnippet
+
+snippet rf "private function (rf)"
+private ${1:void} ${2:func}($3) ${4:throws $5} {
+  $0
+}
+endsnippet
+
+snippet for "for"
+for ($1; $2; $3) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet fore "for (each)"
+for ($1 : $2) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet if "if (if)"
+if ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if else (ife)"
+if ($1) {
+  ${2:// if body}
+} else {
+  ${3:// else body}
+}
+endsnippet
+
+snippet ifel "if else if (ifel)"
+if ($1) {
+  ${2:// if body}
+} else if ($3) {
+  ${4:// else if body}
+}
+endsnippet
+
+snippet while "while (while)"
+while ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet do "do while (do)"
+do {
+  ${VISUAL}$0
+} while ($1);
+endsnippet

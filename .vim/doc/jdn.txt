@@ -1,0 +1,77 @@
+*jdn.txt*  Julian Day Numbers: Simple date manipulation for vim
+
+Author: Matt Spear <batman900 at gmail DOT com>
+jdn version 0.01
+
+==============================================================================
+1. Overview~
+                                                *jdn-overview*
+
+vim lacks a mechanism to do date manipulations (e.g. add 1 month to today),
+and Julian Day Numbers are a simple mechanism to represent a date.  This is
+primarilly intended for other script users, and only exposes functions.
+
+==============================================================================
+2. Functions~
+                                                *jdn-functions*
+
+
+jdn#jdn(year, month, day)               Constructs a Julian Day Number from
+                                        the given Gregorian date
+
+jdn#now()                               Constructs a Julian Day Number from
+                                        the current date
+
+jdn#month_length(year, month)           Gets the length of the month in the
+                                        given year
+
+jdn#is_leap_year(year)                  Tests if the given year is a leap year
+
+jdn#day_of_week(jdn)                    Gives the day of the week for the
+                                        given day (Sunday is 0, Monday is 1,
+                                        ..., Saturday is 6)
+
+jdn#add_days(jdn, days)                 Adds the given number of days to the
+                                        given Julian Day Number
+
+jdn#add_month(jdn, month)               Adds the given number of months to the
+                                        given Julian Day Number
+
+jdn#add_year(jdn, year)                 Adds the given number of years to the
+                                        given Julian Day Number
+
+jdn#to_gregorian(jdn)                   Converts the Julian Day Number to an
+                                        array [<year>, <month>, <day>]
+                                        representing the Gregorian calendar
+
+==============================================================================
+8. History ~
+                                                 *jdn-history*
+
+Version 0.01
+    - Initial release
+
+==============================================================================
+9. Thanks ~
+                                                 *jdn-thanks*
+
+- Vim devs for vim
+- Abhijit Nadgouda for the initial idea
+- emacs OrgMode authors for some ideas
+- Wikipedia for the julian day number hints
+
+==============================================================================
+10. Contact ~
+                                                 *jdn-contact*
+
+If you have questions, bug reports, suggestions, etc. the author can be
+contacted at batman900 AT gmail DOT com. The latest version is available at
+http://www.vim.org/.  If you like the script please vote for it on
+www.vim.org.
+
+==============================================================================
+License ~
+
+This software is licensed under the MIT license.
+
+vim:tw=78:fo=tcq2:isk=!-~,^*,^\|,^\":ts=8:ft=help:norl:

@@ -1,0 +1,517 @@
+*todo.txt*  vimOrg: A vimmy todo manager
+
+Author: Matt Spear <batman900 at gmail DOT com>
+vimOrg version 0.01
+
+==============================================================================
+1. Overview~
+                                                *vimorg-overview*
+
+vimOrg has some of emacs OrgMode but is designed from scratch with a vim
+style.  Some features of OrgMode will not be included (e.g. tables), and the
+format is distinct.  vimOrg has a number of influences from GTD, to
+http://ifacethoughts.net/2008/05/11/task-management-using-vim/, to todo.sh.
+This started as a syntax file and an indent file, and eventually grew to
+include other features (e.g. recurrent events).
+
+==============================================================================
+2. Installation ~
+                                                 *vimorg-installation*
+
+Extract the download file, compile the c++ code (if it seems useful) using
+the Makefile.  Then copy the directories under vim/ to the |vimfiles| directory
+(~/.vim under Unix or %HOMEPATH%\vimfiles under Windows).  Restart Vim and
+execute:
+>
+        helptags ~/.vim/doc
+<
+
+In the archive there is a c++ code file (dzen-cal.cpp) (there are other
+c++ dependancies in the include directory).  Compile the c++ code by:
+>
+        make
+<
+this will create a dzen-cal executable, this is a simple parser (a pretty
+big hack) for todo files, and gives more power to the vim scripts.  This
+should be added to a directory in your $PATH.
+
+There are a few other binaries that will be discussed in |vimorg-binaries|.
+
+==============================================================================
+4. File Format ~
+                                                 *vimorg-format*
+
+vimOrg uses two file formats:
+1) Todo for the actual todo list
+2) Todocal for viewing the calendar and agenda
+
+------------------------------------------------------------------------------
+i. Todo file format:
+
+In contrast with emacs orgMode, vimOrg uses indentation to specify childrem.
+This also makes it simple for vim's built-in folding to work.  A file consists
+of multiple projects, each project can have any number of items, and each item
+can have any number of sub-items.
+
+Each item starts with a {-} or a number (for an ordered list) and can contain
+any text, the item can have extra text below it indented once if needed (e.g.
+"Make a completed time" in the sample.todo file has extra text below its line
+before the subitem "aoeu").
+
+Inside an item there can be:
+* Tags which start with a {:} and can contain anything but a {Space} or {:}.
+  Tags can be used for context (in the GTD setting), or any other feature
+  associated with the item
+* A priority ({=high}, {=med}, {=low}, {=done}); if none appear it is the
+  default, which by convention is medium
+* A special block can appear between [ and ], this may become a jump in future
+  versions, but for now makes selection easier
+* A url will also be highlighted, and can be opened in a browser (see
+  |g:todo_browser|) using {CTRL-ENTER}
+* A due date can be set following an {@}, see bolow for possible formats
+* A reminder date can be set following an {@rem}, see below for the format
+* A completed date can be set with @comp <month>/<day>/<year> <hour>:<minute><[aApP]>
+  this is automatically added if |g:todo_add_comp| is set when using
+  <LOCALLEADER>d
+* Any other text can be added
+
+The above can appear in any order, by default the plugins generate dates at
+the head, priorities at the tail, and tags right before priorities.
+Note multiple values for date, completion, priority, and reminders can appear,
+but the programs provided will only use the first occurence.
+
+------------------------------------------------------------------------------
+ii. Reminder format:
+
+@rem <value><unit>      The <value> is interpreted as being the unit time
+                        before the event.  The <unit> can be <m> for minutes,
+                        <h> for hours, and <d> for days.
+
+This will require some script to parse the dates and reminders to alert of
+upcoming events.  dzen-cal --reminder will show the upcoming reminders,
+subject to having an alert of less than 30 days.  send-reminders.pl will run
+dzen-cal and actually send the reminders.  See below for more discussion on
+the external programs.
+
+------------------------------------------------------------------------------
+iii. Date format:
+
+A date can be in any of the following formats, and can be followed by a time
+range:
+
+@<month>/<day>/<year>                           A simple date.  <month> and
+                                                <day> can be 1 to 2 digits;
+                                                <year> must be 4 digits.
+
+@<month>/<day>/<year>-<month>/<day>/<year>      A date range, the formats are
+                                                the same as the simple date.
+
+@rec <dow>                                      An event which occurs every
+                                                week on each day specified.
+                                                The <dow> can be:
+                                                <m> for Monday
+                                                <t> for Tuesday
+                                                <w> for Wendesday
+                                                <r> for Thursday
+                                                <f> for Friday
+                                                <s> for Saturday
+                                                <u> for Sunday
+
+@rec <dow>/<offset>                             An event that occurs on the
+                                                first <dow> after <offset>
+                                                days into the month.  <offset>
+                                                can be negative for events
+                                                occuring at the end of the
+                                                month.
+
+@rec <dow>/<offset>/<month>                     An event that occurs on the
+                                                first <dow> ofter <offset>, in
+                                                the month specified.  <dow>
+                                                and <offset> are as above.
+
+@rec <month>/<day>                              An event that occurs yearly on
+                                                the given <month> and <day>.
+
+The time format uses 12 hour time:
+
+<hour>:<minute><ampm>                           <hour> is 1-2 digits and must
+                                                be less than 12.  <minute> is
+                                                2 digits, <ampm> can be:
+                                                <a> or <A> for AM
+                                                <p> or <P> for PM
+
+The time range can be specified by joining two times with <->.
+
+Note not all events can be covered, e.g. Easter would not fit any of the above
+patterns, but most events dates should be covered.
+
+------------------------------------------------------------------------------
+iii. Date Examples
+
+@5/12/2011                                      Occurs on May 12th 2011
+
+@5/12/2011 5:00p-6:00p                          Occurs on May 12th 2011 from
+                                                1700 to 1800 hours
+
+@5/12/2011-5/13/2011                            Occurs from May 12th 2011
+                                                until May 13 2011
+
+@5/12/2011-5/13/2011 3:00p-3:30p                Occurs from May 12th 2011
+                                                until May 13 2011, and each
+                                                day from 1500 hours to 1530
+                                                hours
+
+@rec w                                          Occurs every Wendesday
+
+@rec mtwrf                                      Occurs every weekday
+
+@rec mtwrf/1                                    Occurs every month on the
+                                                first of the month
+
+@rec r/7                                        Occurs on the second Thursday
+                                                of every month
+
+@rec rf/-7                                      Occurs on the last Thursday or
+                                                Friday of every month
+                                                (whichever comes first)
+
+@rec u/7/3                                      Occurs on the second Sunday of
+                                                March
+
+@rec 3/17 3:00p                                 Occurs yearly on March 17th at
+                                                1500 hours
+
+==============================================================================
+5. Commands ~
+                                                 *vimorg-commands*
+
+:High
+Show all items with a high priority in the location list.
+
+:Med
+Show all items with a medium priority in the location list.
+
+:Low
+Show all items with a low priority in the location list.
+
+:Tag <tag> <tag>*
+Show all items with any of the tags specified in the location list.
+
+:Calendar <month>? <year>? <options>?
+Display a calendar (in the todocal format) view of the current file with the
+dates with events highlighted, dates which are passed greyed out, and today
+highlighted.  If the first parameter is a number then that is the month to
+start displaying.  If the second parameter is a number then it is the year to
+use.  If the first two options are not a number than will be interpreted as
+regular options. The remaining options are passed to dzen-cal unmodified.  By
+default shows 3 months.  Note requires the dzen-cal program.
+
+:Agenda <month>? <year>? <options>?
+Shows an agenda view (in the todocal format) with the events in the current
+file.  The options are the same format as in :Calendar.  Note requires the
+dzen-cal program.
+
+:AddDate[!] <date>
+Add a date to the current line.  The format of <date> is:
+        @<string>               Take the <string> as the exact date to add
+                                (e.g. for recursive dates)
+        <day>                   Take the next month/year that has a day
+                                <day> that is not passed
+        [mtwrfsu]               Take the next day that matches the day of the
+                                week
+        <month>/<day>           Use the next month/day/year that has not
+                                passed
+        <month>/<day>/<year>    Use the specified month/day/year
+        [+-]<number>[dwmy]
+To specify a range any of the two formats can be joined with '-' (except
+@<string>).  To specify a time do <date> <time>.  Note the @<string> is
+unchecked for validity; <time> is also not checked for validity.
+If <bang> then will apply to the current item and sub-items.
+
+:AddTag[!] <tag>
+Add the tag to the current line.  If the tag already exists, does nothing.
+If <bang> then will apply to the current item and sub-items.
+
+------------------------------------------------------------------------------
+i. Examples
+
+For the following assume the current date is 1/16/2011.
+
+:AddDate 2-3
+Adds a date @2/2/2011-2/3/2011, Note this is Feb as 1/2/2011 has passed
+
+:AddDate m-w
+Adds a date @1/17/2011-1/19/2011
+
+:AddDate m-2
+Adds a date @1/17/2011-2/2/2011, Note this uses Feb as 1/2/2011 has passed
+
+:AddDate m-3/20
+Adds a date @1/17/2011-3/20/2011
+
+:AddDate +5-r
+Adds a date @1/21/2011-1/27/2011
+
+:AddDate 2-3 5:00p-6:00p
+Adds a date @2/2/2011-2/3/2011 5:00p-6:00p
+
+==============================================================================
+6. Mappings ~
+                                                 *vimorg-mappings*
+
+A common idiom in the mappings is <x> (x) will operate on the line, while
+<S-x> (X) will operate on a block (which is the line and all children).
+
+------------------------------------------------------------------------------
+i. Insert Mode mappings:
+
+<TAB>/{SHIFT-TAB}                               Indent/dedent the current line
+
+{META-LEFT}/{META-RIGHT}                        Indent/dedent the current line
+
+{META-UP}/{META-k}                              Move the current line up
+
+{META-DOWN}/{META-j}                            Move the current line down
+
+<RETURN>/{SHIFT-RETURN}                         Insert an item below/above the
+                                                current line
+
+------------------------------------------------------------------------------
+ii. Normal Mode Mappings:
+
+<TAB>/{SHIFT-TAB}                               Indent/dedent the current line
+
+<LOCALLEADER><TAB>/<LOCALLEADER>{SHIFT-TAB}     Indent/dedent the current block
+
+{META-LEFT}/{META-RIGHT}                        Indent/dedent the current line
+
+{META-SHIFT-LEFT}/{META-SHIFT-RIGHT}            Indent/dedent the current block
+
+{META-UP}/{META-k}                              Move the current line up
+
+{META-DOWN}/{META-j}                            Move the current line down
+
+{META-SHIFT-UP}/{META-SHIFT-k}                  Move the current block up
+
+{META-SHIFT-DOWN}/{META-SHIFT-j}                Move the current block down
+
+<LOCALLEADER>k/<LOCALLEADER>j                   Move the current line up/down
+
+<LOCALLEADER>K/<LOCALLEADER>J                   Move the current block up/down
+
+I                                               Start insert mode at the start
+                                                of the line after the item's
+                                                header, if already at the
+                                                beginning does a :norm! I
+
+^/<HOME>                                        Move to the start of the line
+                                                after the item's header, if
+                                                already at the beginning does
+                                                a :norm! ^
+
+<RETURN>/<S-RETURN>                             Insert a new item below/above
+                                                the current item
+
+<C-RETURN>                                      Open the url under the cursor
+                                                in a browser
+                                                (See 'g:todo_browser')
+
+<LOCALLEADER>2/<LOCALLEADER>@                   Prompt for a date and apply it
+                                                to the item/block, will show
+                                                the current month and the next
+                                                three, the current day will be
+                                                highlighted, See |AddDate| for
+                                                the possible ways to enter a
+                                                date
+
+<LOCALLEADER>t/<LOCALLEADER>T                   Prompt for a tag and apply it
+                                                to the item/block
+
+<LOCALLEADER>d/<LOCALLEADER>D                   Toggle the item/block done
+
+<LOCALLEADER>h/<LOCALLEADER>H                   Toggle the item/block as high
+                                                priority
+
+<LOCALLEADER>m/<LOCALLEADER>M                   Toggle the item/block as
+                                                medium priority
+
+<LOCALLEADER>l/<LOCALLEADER>L                   Toggle the item/block as low
+                                                priority
+
+------------------------------------------------------------------------------
+iii. Visual Mode mappings:
+
+{META-UP}/{META-k}                              Move the selected region up a
+                                                line
+
+{META-DOWN}/{META-j}                            Move the selected region down
+                                                a line
+
+==============================================================================
+3. Customization ~
+                                                 *vimorg-customization*
+
+------------------------------------------------------------------------------
+i. Options:
+
+g:todo_add_comp         If true then will add a completion timestamp when
+                        marking items as done, defaults to true
+
+g:todo_browser          Sets the browser to use when opening a URL, defaults
+                        to "firefox"
+
+g:todo_bin              Sets the path to the dzen-cal binary, defaults to
+                        "dzen-cal"
+
+------------------------------------------------------------------------------
+ii. Autocmds:
+
+Most likely one would want:
+>
+        au! BufRead,BufNewFile *.todo setlocal ft=todo
+<
+
+If you find yourself saving the calendar file then:
+>
+        au! BufRead,BufNewFile *.todocal setlocal ft=todocal
+<
+will ensure it is correctly highlighted (assuming the .todocal suffix is
+added).
+
+------------------------------------------------------------------------------
+iii. Todo Coloring:
+
+Todo introduces the following colors:
+
+projHead                A start of a project (when the item's header is the
+                        first character)
+
+projTask                A task with the default priority
+
+projTaskH               A task with a high priority
+
+projTaskM               A task with a medium priority
+
+projTaskL               A task with a low priority
+
+projTaskD               A task marked done
+
+projLow                 The low priority marker {=low}
+
+projMed                 The medium priority marker {=med}
+
+projHigh                The high priority marker {=high}
+
+projDone                The done marker {=done}
+
+projComp                The completed time
+
+In addition the following links are defined:
+>
+        hi def link projTodo      Todo
+        hi def link projJump      String
+        hi def link projTaskNote  String
+        hi def link projDate      Constant
+        hi def link projComp      Constant
+        hi def link projRecur     Constant
+        hi def link projRecurYear Constant
+        hi def link projReminder  Constant
+        hi def link projTag       SpecialChar
+        hi def link projURL       Underlined
+        hi def link projNum       projTask
+        hi def link projNumL      projTaskL
+        hi def link projNumM      projTaskM
+        hi def link projNumH      projTaskH
+        hi def link projNumD      projTaskD
+<
+
+I use the following colorings:
+>
+        hi projHead guifg=#8733FF guibg=NONE gui=bold ctermfg=cyan ctermbg=NONE cterm=bold
+        hi projTask guifg=fg guibg=NONE gui=NONE ctermfg=NONE ctermbg=NONE cterm=NONE
+        hi projTaskH guifg=#FF3030 guibg=NONE gui=NONE ctermfg=red ctermbg=NONE cterm=NONE
+        hi projTaskM guifg=fg guibg=NONE gui=NONE ctermfg=NONE ctermbg=NONE cterm=NONE
+        hi projTaskL guifg=#AAAAAA guibg=NONE gui=NONE ctermfg=gray ctermbg=NONE cterm=NONE
+        hi projTaskD guifg=#444444 guibg=NONE gui=NONE ctermfg=darkgray ctermbg=NONE cterm=NONE
+        hi projLow guifg=#AAAAAA guibg=NONE gui=NONE ctermfg=gray ctermbg=NONE cterm=NONE
+        hi projMed guifg=fg guibg=NONE gui=NONE ctermfg=NONE ctermbg=NONE cterm=NONE
+        hi projHigh guifg=#FF3030 guibg=NONE gui=underline ctermfg=red ctermbg=NONE cterm=underline
+        hi projDone guifg=#444444 guibg=NONE gui=NONE ctermfg=darkgray ctermbg=NONE cterm=NONE
+        hi projComp guifg=#666666 guibg=NONE gui=NONE ctermfg=darkgray ctermbg=NONE cterm=NONE
+<
+
+------------------------------------------------------------------------------
+iii. Todocal Coloring:
+
+todocalItemPast         An item whose date has passed
+
+todocalItemNow          Any items occuring in the current month
+
+todocalItemNext         Any items occuring in a future month
+
+todocalItemToday        Any item that occurs on the current date
+
+My colorings are:
+>
+        hi todocalItemPast guifg=#777777 guibg=NONE gui=NONE ctermfg=red ctermbg=NONE cterm=NONE
+        hi todocalItemNow guifg=#FF7777 guibg=NONE gui=NONE ctermfg=red ctermbg=NONE cterm=NONE
+        hi todocalItemNext guifg=#CC3333 guibg=NONE gui=NONE ctermfg=red ctermbg=NONE cterm=NONE
+        hi todocalItemToday guifg=#FFFF00 guibg=NONE gui=NONE ctermfg=red ctermbg=NONE cterm=NONE
+>
+
+==============================================================================
+7. External Programs ~
+                                                 *vimorg-binaries*
+To aid in usefulness I have included 3 "binaries":
+
+dzen-cal                Compiled from dzen-cal.cpp.  Contains a basic parser
+                        of the todo file, and includes options for displaying
+                        the data in other formats (e.g. an agenda view, or a
+                        monh view with vim or linux or dzen).  It should be
+                        relatively easy to customize (it is a standard C++
+                        program) and add options.  Do dzen-cal --help for
+                        the options.  Note requires the pcrecpp library.
+
+send-reminders.pl       A simple wrapper around dzen-cal to send the reminders
+                        somewhere else.  Can send an email with a gmail
+                        account, or write the output to inotify.  This should
+                        be easy to customize as there is very little to the
+                        code (dzen-cal does all the work).
+
+dzen-cal.sh             An example wrapper to show the current and next month
+                        in a calendar using dzen2.  I use this with the
+                        awesome window manager to execute upon clicking my
+                        clock so I can get a quick overview of my upcoming
+                        events.
+
+==============================================================================
+8. History ~
+                                                 *vimorg-history*
+
+Version 0.01
+    - Initial release
+
+==============================================================================
+9. Thanks ~
+                                                 *vimorg-thanks*
+
+- Vim devs for vim
+- Abhijit Nadgouda for the initial idea
+- emacs OrgMode authors for some ideas
+- Wikipedia for the julian day number hints
+
+==============================================================================
+10. Contact ~
+                                                 *vimorg-contact*
+
+If you have questions, bug reports, suggestions, etc. the author can be
+contacted at batman900 AT gmail DOT com. The latest version is available at
+http://www.vim.org/.  If you like the script please vote for it on
+www.vim.org.
+
+==============================================================================
+License ~
+
+This software is licensed under the MIT license.
+
+vim:tw=78:fo=tcq2:isk=!-~,^*,^\|,^\":ts=8:ft=help:norl:

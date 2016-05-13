@@ -1,0 +1,131 @@
+snippet #! "shebang (#!)" !b
+#!/usr/bin/perl
+$0
+endsnippet
+
+snippet uses "use standard libs (uses)" !b
+use strict;
+use warnings;
+use v5.12;
+$0
+endsnippet
+
+snippet for "for loop (for)"
+for ${1:my $i}(@${2:arr}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for int loop (fori)"
+for (my $${1:i} = 0; $$1 < ${2:condition}; $$1++) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet iunless "Conditional one-line (iunless)"
+${1:expression} unless ${2:condition};
+endsnippet
+
+snippet iif "Conditional one-line (iif)"
+${1:expression} if ${2:condition};
+endsnippet
+
+snippet if "if (if)"
+if ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet while "while (while)"
+while ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet unless "unless (unless)"
+unless ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet until "until (until)"
+until ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet do "do (do)"
+do ($1) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet sub "sub (sub)"
+sub ${1:function_name} {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet csub "class sub (csub)"
+sub ${1:function_name} {
+  my ($self, $2) = @_;
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet ifel "if..else (ife)"
+if ($1) {
+  ${2:# body...}
+} else {
+  ${3:# else...}
+}
+endsnippet
+
+snippet ife "if..elsif..else (ife)"
+if ($1) {
+  ${2:# body...}
+} elsif ($3) {
+  ${4:# elsif body...}
+} else {
+  ${5:# else body...}
+}
+endsnippet
+
+snippet rfile "read file (rfile)"
+open(F, $1) or die "Cannot open ${1/['"]//g}.\n";
+while(<F>) {
+  chomp;
+  $0
+}
+close(F);
+endsnippet
+
+snippet class "class (class)"
+package ${1:Class};
+use base qw/${2:BaseName}/;
+
+sub new
+{
+  my ($cls, ${4:@args}) = @_;
+  my $self = {
+    $5
+  };
+  $self = bless($self, $cls);
+  return $self;
+}
+
+$0
+
+1;
+endsnippet
+
+snippet slurp "slurp"
+my $${1:var};
+{
+  local $/ = undef;
+  local *FILE;
+  open FILE, "<${2:file}";
+  $$1 = <FILE>;
+  close FILE;
+}
+endsnippet

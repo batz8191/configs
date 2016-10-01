@@ -27,3 +27,5 @@ marvel.com            ~                                    !1                   
 www-ssl.bestbuy.com   ~                                    *                       16
 store.steampowered.com ~                                   *                       16
 github.com            ~                                    *                       16
+secure.newegg.com     ~                                    *                       16
+www.gog.com           ~                                    *                       16

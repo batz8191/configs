@@ -29,3 +29,4 @@ store.steampowered.com ~                                   *                    
 github.com            ~                                    *                       16
 secure.newegg.com     ~                                    *                       16
 www.gog.com           ~                                    *                       16
+account.nvidia.com    ~                                    *                       16

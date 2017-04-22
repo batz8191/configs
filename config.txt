@@ -23,8 +23,8 @@ www.comixology.com    ~                                    *                    
 192.168.1.1           ~                                    *                       16
 account.live.com      ~                                    *                       16
 www.facebook.com      ~                                    *                       17
-marvel.com            ~                                    !1                      16                   1
 www-ssl.bestbuy.com   ~                                    *                       16
+marvel.com            ~                                    !1                      16
 store.steampowered.com ~                                   *                       16
 github.com            ~                                    *                       16
 secure.newegg.com     ~                                    *                       16
@@ -33,3 +33,6 @@ account.nvidia.com    ~                                    *                    
 marvelheroes.com      ~                                    *                       16
 www.funimation.com    ~                                    !1                      16
 secure.square-enix.com    ~                                    !1                      16
+www.dell.com          ~                                    *                       16
+appleid.apple.com     ~                                    *                       16
+www.gamersgate.com    ~                                    *                       16

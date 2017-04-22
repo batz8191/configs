@@ -30,3 +30,6 @@ github.com            ~                                    *                    
 secure.newegg.com     ~                                    *                       16
 www.gog.com           ~                                    *                       16
 account.nvidia.com    ~                                    *                       16
+marvelheroes.com      ~                                    *                       16
+www.funimation.com    ~                                    !1                      16
+secure.square-enix.com    ~                                    !1                      16

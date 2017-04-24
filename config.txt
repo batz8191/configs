@@ -36,3 +36,4 @@ secure.square-enix.com    ~                                    !1               
 www.dell.com          ~                                    *                       16
 appleid.apple.com     ~                                    *                       16
 www.gamersgate.com    ~                                    *                       16
+account.mojang.com    ~                                    *                       16

@@ -37,3 +37,4 @@ www.dell.com          ~                                    *                    
 appleid.apple.com     ~                                    *                       16
 www.gamersgate.com    ~                                    *                       16
 account.mojang.com    ~                                    *                       16
+club.pokemon.com      ~                                    !1                      16

@@ -27,3 +27,4 @@ marvel.com            ~                                    !1                   
 www-ssl.bestbuy.com   ~                                    *                       16
 store.steampowered.com ~                                   *                       16
 github.com            ~                                    *                       16
+appleid.apple.com     ~                                    *                       16

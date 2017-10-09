@@ -38,5 +38,8 @@ appleid.apple.com     ~                                    *                    
 www.gamersgate.com    ~                                    *                       16
 account.mojang.com    ~                                    *                       16
 club.pokemon.com      ~                                    !1                      16
+account.bethesda.net  ~                                    !1                      16
 account.mojang.com    ~                                    *                       16
 signin.ea.com         ~                                    !1                      16
+www.wbplay.com        ~                                    *                       16
+us.battle.net         ~                                    *                       16

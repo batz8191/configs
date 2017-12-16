@@ -44,4 +44,5 @@ signin.ea.com         ~                                    !1                   
 www.wbplay.com        ~                                    *                       16
 us.battle.net         ~                                    *                       16
 www.bandainamcoent.com ~                                   !1                      16
+account.ubisoft.com   ~                                    *                       16
 accounts.nintendo.com  ~                                   !1                      16

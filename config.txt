@@ -45,4 +45,5 @@ www.wbplay.com        ~                                    *                    
 us.battle.net         ~                                    *                       16
 www.bandainamcoent.com ~                                   !1                      16
 account.ubisoft.com   ~                                    *                       16
-accounts.nintendo.com  ~                                   !1                      16
+accounts.nintendo.com ~                                   !1                      16
+passport.twitch.tv    ~                                   !1                      16

@@ -8,7 +8,7 @@ www.bankofamerica.com .,'"<>~!@#$%^&*(){}[]/?=+\|          *                    
 noscript.com          .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       100
 login.comcast.net     ~                                    *                       16
 boardgamegeek.com     ~                                    *                       16
-shop.lenovo.com       .,'"<>~!@#$%^&*(){}[]/?=+\|          *                       32
+shop.lenovo.com       ~                                    !,1                     16
 www.linkedin.com      ~                                    *                       16
 www.crunchyroll.com   ~                                    *                       16
 eac.schwab.com        ~                                    *                       8
@@ -43,3 +43,11 @@ account.mojang.com    ~                                    *                    
 signin.ea.com         ~                                    !1                      16
 www.wbplay.com        ~                                    *                       16
 us.battle.net         ~                                    *                       16
+www.bandainamcoent.com ~                                   !1                      16
+www.humblebundle.com  ~                                    *                       16
+account.ubisoft.com   ~                                    *                       16
+www.united.com        ~                                    *                       16
+access.totalwar.com   ~                                    *                       16
+accounts.nintendo.com ~                                   !1                      16
+www.ubisoft.com       ~                                    *                       16
+passport.twitch.tv    ~                                   !1                      16

@@ -47,3 +47,5 @@ www.bandainamcoent.com ~                                   !1                   
 account.ubisoft.com   ~                                    *                       16
 accounts.nintendo.com ~                                   !1                      16
 passport.twitch.tv    ~                                   !1                      16
+www.paradoxplaza.com  ~                                   !1                      16
+magic.wizards.com     ~                                   !1                      16

@@ -52,3 +52,4 @@ passport.twitch.tv    ~                                   !1                    
 accounts.nintendo.com ~                                   !1                      16
 www.paradoxplaza.com  ~                                   !1                      16
 magic.wizards.com     ~                                   !1                      16
+id.sonyentertainmentnetwork.com     ~                                   !1                      16

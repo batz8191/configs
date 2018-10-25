@@ -60,3 +60,4 @@ www.fanatical.com     ~                                   !1                    
 www.daysofwonder.com  ~                                   !1                      16
 router.asus.com       ~                                    *                      16
 account.asus.com      ~                                   !1                      16
+profile.callofduty.com      ~                                   !1                      16

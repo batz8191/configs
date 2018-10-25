@@ -53,3 +53,10 @@ accounts.nintendo.com ~                                   !1                    
 www.paradoxplaza.com  ~                                   !1                      16
 magic.wizards.com     ~                                   !1                      16
 id.sonyentertainmentnetwork.com     ~                                   !1                      16
+www.slitherine.com    ~                                   !1                      16
+account.asmodee.net   ~                                   !1                      16
+www.fanatical.com     ~                                   !1                      16
+www.daysofwonder.com  ~                                   !1                      16
+router.asus.com       ~                                    *                      16
+account.asus.com      ~                                   !1                      16
+profile.callofduty.com      ~                                   !1                      16

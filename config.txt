@@ -57,3 +57,4 @@ id.sonyentertainmentnetwork.com     ~                                   !1      
 www.slitherine.com    ~                                   !1                      16
 account.asmodee.net   ~                                   !1                      16
 www.fanatical.com     ~                                   !1                      16
+googleux.perksplus.com ~                                   !1                      16

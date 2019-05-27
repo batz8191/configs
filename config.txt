@@ -61,3 +61,7 @@ www.daysofwonder.com  ~                                   !1                    
 router.asus.com       ~                                    *                      16
 account.asus.com      ~                                   !1                      16
 profile.callofduty.com      ~                                   !1                      16
+accounts.epicgames.com      ~                                   !1                      16
+www.kickstarter.com      ~                                   !1                      16
+secure.evga.com      '                                   !1                      16
+accounts.spotify.com      '                                   !1                      16

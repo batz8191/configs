@@ -27,6 +27,7 @@ www-ssl.bestbuy.com   ~                                    *                    
 marvel.com            ~                                    !1                      16
 store.steampowered.com ~                                   *                       16
 github.com            ~                                    *                       16
+appleid.apple.com     ~                                    *                       16
 secure.newegg.com     ~                                    *                       16
 www.gog.com           ~                                    *                       16
 account.nvidia.com    ~                                    *                       16
@@ -34,7 +35,6 @@ marvelheroes.com      ~                                    *                    
 www.funimation.com    ~                                    !1                      16
 secure.square-enix.com    ~                                    !1                      16
 www.dell.com          ~                                    *                       16
-appleid.apple.com     ~                                    *                       16
 www.gamersgate.com    ~                                    *                       16
 account.mojang.com    ~                                    *                       16
 club.pokemon.com      ~                                    !1                      16
@@ -57,6 +57,7 @@ id.sonyentertainmentnetwork.com     ~                                   !1      
 www.slitherine.com    ~                                   !1                      16
 account.asmodee.net   ~                                   !1                      16
 www.fanatical.com     ~                                   !1                      16
+googleux.perksplus.com ~                                   !1                      16
 www.daysofwonder.com  ~                                   !1                      16
 router.asus.com       ~                                    *                      16
 account.asus.com      ~                                   !1                      16

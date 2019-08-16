@@ -60,3 +60,4 @@ www.daysofwonder.com  ~                                   !1                    
 router.asus.com       ~                                    *                      16
 account.asus.com      ~                                   !1                      16
 profile.callofduty.com      ~                                   !1                      16
+www.kickstarter.com      ~                                   !1                      16

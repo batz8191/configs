@@ -66,3 +66,5 @@ accounts.epicgames.com      ~                                   !1              
 www.kickstarter.com      ~                                   !1                      16
 secure.evga.com      '                                   !1                      16
 accounts.spotify.com      '                                   !1                      16
+connect.garmin.com      '                                   !1                      16
+www.thatsmymortgage.com       '                                   !1                      16

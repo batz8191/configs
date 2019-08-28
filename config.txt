@@ -39,7 +39,6 @@ www.gamersgate.com    ~                                    *                    
 account.mojang.com    ~                                    *                       16
 club.pokemon.com      ~                                    !1                      16
 account.bethesda.net  ~                                    !1                      16
-account.mojang.com    ~                                    *                       16
 signin.ea.com         ~                                    !1                      16
 www.wbplay.com        ~                                    *                       16
 us.battle.net         ~                                    *                       16
@@ -62,8 +61,8 @@ www.daysofwonder.com  ~                                   !1                    
 router.asus.com       ~                                    *                      16
 account.asus.com      ~                                   !1                      16
 profile.callofduty.com      ~                                   !1                      16
-accounts.epicgames.com      ~                                   !1                      16
 www.kickstarter.com      ~                                   !1                      16
+accounts.epicgames.com      ~                                   !1                      16
 secure.evga.com      '                                   !1                      16
 accounts.spotify.com      '                                   !1                      16
 connect.garmin.com      '                                   !1                      16

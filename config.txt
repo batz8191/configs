@@ -48,7 +48,6 @@ www.humblebundle.com  ~                                    *                    
 account.ubisoft.com   ~                                    *                       16
 www.united.com        ~                                    *                       16
 access.totalwar.com   ~                                    *                       16
-www.ubisoft.com       ~                                    *                       16
 passport.twitch.tv    ~                                   !1                      16
 accounts.nintendo.com ~                                   !1                      16
 www.paradoxplaza.com  ~                                   !1                      16
@@ -62,3 +61,5 @@ www.daysofwonder.com  ~                                   !1                    
 router.asus.com       ~                                    *                      16
 account.asus.com      ~                                   !1                      16
 profile.callofduty.com      ~                                   !1                      16
+www.spotify.com      ~                                   !1                      16
+www.strava.com      ~                                   !1                      16

@@ -67,3 +67,4 @@ secure.evga.com      '                                   !1                     
 accounts.spotify.com      '                                   !1                      16
 connect.garmin.com      '                                   !1                      16
 www.thatsmymortgage.com       '                                   !1                      16
+www.sears.com       ,.!?                                   1                      10

@@ -69,3 +69,4 @@ accounts.spotify.com      '                                   !1                
 connect.garmin.com      '                                   !1                      16
 www.thatsmymortgage.com       '                                   !1                      16
 www.sears.com       ,.!?                                   1                      10
+secure.zwift.com      ~                                   !1                      16

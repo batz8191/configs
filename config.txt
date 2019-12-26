@@ -50,7 +50,7 @@ access.totalwar.com   ~                                    *                    
 passport.twitch.tv    ~                                   !1                      16
 accounts.nintendo.com ~                                   !1                      16
 www.paradoxplaza.com  ~                                   !1                      16
-magic.wizards.com     ~                                   !1                      16
+magic.wizards.com     ~                                   !1                      16             1
 id.sonyentertainmentnetwork.com     ~                                   !1                      16
 www.slitherine.com    ~                                   !1                      16
 account.asmodee.net   ~                                   !1                      16
@@ -70,3 +70,10 @@ connect.garmin.com      '                                   !1                  
 www.thatsmymortgage.com       '                                   !1                      16
 www.sears.com       ,.!?                                   1                      10
 secure.zwift.com      ~                                   !1                      16
+my.rouvy.com      ,.                                   !1                      16
+www.zwiftpower.com      ,.                                   !1                      16
+cloud.tacx.com         ,.                                   !1                      16
+app.thesufferfest.com  ,.                                   !1                      16
+www.nexusmods.com  ,.                                   !1                      16
+www.viz.com       ,.                                   !1                      16
+www.trainerroad.com       ,.                                   !1                      16

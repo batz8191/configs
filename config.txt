@@ -66,7 +66,7 @@ www.kickstarter.com      ~                                   !1                 
 accounts.epicgames.com      ~                                   !1                      16
 secure.evga.com      '                                   !1                      16
 accounts.spotify.com      '                                   !1                      16
-connect.garmin.com      '                                   !1                      16
+connect.garmin.com      '                                   ^1                      16
 www.thatsmymortgage.com       '                                   !1                      16
 www.sears.com       ,.!?                                   1                      10
 secure.zwift.com      ~                                   !1                      16
@@ -77,3 +77,7 @@ app.thesufferfest.com  ,.                                   !1                  
 www.nexusmods.com  ,.                                   !1                      16
 www.viz.com       ,.                                   !1                      16
 www.trainerroad.com       ,.                                   !1                      16
+www.trisignup.com         ,.                                   !1                      16
+ccnbikes.com              ,.                                   !1                      16
+embed.fitrankings.com     ,.                                   !1                      16
+wtcsso.b2clogin.com       ,.                                   !1                      16

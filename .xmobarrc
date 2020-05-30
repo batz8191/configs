@@ -1,0 +1,19 @@
+Config { font = "xft:DejaVu Sans Mono-18"
+        , bgColor = "black"
+        , fgColor = "white"
+        , position = Bottom
+        , lowerOnStart = False
+        , commands = [ Run Cpu ["-t","<total>","-L","0","-H","90","--normal","white","--high","red"] 5
+          , Run StdinReader
+          , Run Memory ["-t","<usedratio>%"] 10
+          , Run Date "%a %m/%d/%Y %I:%M %p" "date" 30
+          , Run Battery ["-t","<left>","-L","25","-H","100","--low","#FF0000","--normal","white","--high","white"] 600
+	  , Run Com "/bin/bash" ["-c", "~/bin/getupdates"] "updates" 300
+	  , Run Com "/bin/bash" ["-c", "~/bin/getkeyboard"] "keyboard" 10
+          , Run Com "/bin/bash" ["-c", "~/bin/getvol Master"] "master" 1
+          , Run Com "/bin/bash" ["-c", "~/bin/getvol PCM"] "pcm" 1
+        ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "%StdinReader%}{[ ♬ %master% %pcm% | ⌁ %battery% | ⚡ %cpu% | ⌘ %updates% | ⌨ %keyboard% ] <fc=#ee9a00>%date%</fc>"
+}

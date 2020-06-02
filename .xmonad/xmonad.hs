@@ -11,12 +11,14 @@ import XMonad.Actions.GroupNavigation
 import XMonad.Actions.Submap
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (avoidStruts, manageDocks, ToggleStruts (..))
+import XMonad.Hooks.ManageDocks (docks, avoidStruts, manageDocks, ToggleStruts (..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
 import XMonad.Layout.Tabbed
 import XMonad.Layout.TwoPane (TwoPane(..))
+import XMonad.Prompt
+import XMonad.Prompt.Shell
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.Scratchpad
@@ -42,8 +44,7 @@ myKeys =
     , ((mod4Mask .|. mod1Mask .|. shiftMask, xK_f), spawn "google-chrome --user-data-dir=$HOME/.config/google-chrome/work")
     , ((mod4Mask .|. controlMask .|. shiftMask, xK_f), spawn "google-chrome --user-data-dir=$HOME/.config/google-chrome/testing")
     , ((mod4Mask .|. shiftMask, xK_v), spawn "gvim")
-    , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-    , ((0, xK_Print), spawn "scrot")
+    , ((0, xK_Print), safePrompt "import" myXPConfig)
     , ((mod4Mask, xK_Home), spawn "setxkbmap us -option")
     , ((mod4Mask, xK_End), spawn "setxkbmap dvorak -option caps:swapescape -option compose:ralt")
     , ((mod4Mask .|. controlMask, xK_End), spawn "sleep 1 && xset dpms force off")
@@ -156,20 +157,27 @@ myLayoutHook = smartBorders $ avoidStruts $
 
 myTabConfig = def
     { activeColor = "#cc0000"
-    , activeBorderColor = "#cc0000"
+    , activeBorderColor = "#ffffff"
     , activeTextColor = "#FFFFFF"
-    , inactiveBorderColor = "#333333"
+    , inactiveBorderColor = "#ffffff"
     , inactiveColor = "#333333"
     , inactiveTextColor = "#cccccc"
-    , urgentBorderColor = "#cccc00"
+    , urgentBorderColor = "#ffffff"
     , urgentColor = "#cccc00"
     , urgentTextColor = "#ffffff"
     , fontName = "xft:DejaVu Sans Mono-16"
     }
 
+myXPConfig = def
+    { font = "xft:DejaVu Sans Mono-24"
+    , fgColor = "#ca8f2d"
+    , bgColor = "black"
+    , fgHLight = "#eaaf4c"
+    , height = 26
+    }
+
 myManageHook :: ManageHook
 myManageHook = manageDocks
-    <+> manageHook defaultConfig
     <+> (isFullscreen --> doFullFloat)
     <+> manageScratchPad
 

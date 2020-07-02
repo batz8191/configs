@@ -81,3 +81,4 @@ www.trisignup.com         ,.                                   !1               
 ccnbikes.com              ,.                                   !1                      16
 embed.fitrankings.com     ,.                                   !1                      16
 wtcsso.b2clogin.com       ,.                                   !1                      16
+www.peets.com             ,.                                   !1                      16

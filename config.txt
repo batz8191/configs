@@ -50,6 +50,7 @@ access.totalwar.com   ~                                    *                    
 passport.twitch.tv    ~                                   !1                      16
 accounts.nintendo.com ~                                   !1                      16
 www.paradoxplaza.com  ~                                   !1                      16
+www.mistobox.com      ~                                   !1                      16
 magic.wizards.com     ~                                   !1                      16             1
 id.sonyentertainmentnetwork.com     ~                                   !1                      16
 www.slitherine.com    ~                                   !1                      16
@@ -82,3 +83,4 @@ ccnbikes.com              ,.                                   !1               
 embed.fitrankings.com     ,.                                   !1                      16
 wtcsso.b2clogin.com       ,.                                   !1                      16
 www.peets.com             ,.                                   !1                      16
+www.drinktrade.com        ,.                                   !1                      16

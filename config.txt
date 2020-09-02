@@ -84,3 +84,4 @@ embed.fitrankings.com     ,.                                   !1               
 wtcsso.b2clogin.com       ,.                                   !1                      16
 www.peets.com             ,.                                   !1                      16
 www.drinktrade.com        ,.                                   !1                      16
+ymap.ymcasv.org           ,.                                   !1                      16
